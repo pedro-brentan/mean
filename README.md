@@ -1,24 +1,43 @@
 [![Build Status](https://travis-ci.org/linnovate/mean.svg?branch=master)](https://travis-ci.org/linnovate/mean)
 [![Dependencies Status](https://david-dm.org/linnovate/mean.svg)](https://david-dm.org/linnovate/mean)
-[![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 [![Gitter](https://badges.gitter.im/JoinChat.svg)](https://gitter.im/linnovate/mean?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
 
-# [![MEAN Logo](http://mean.io/system/assets/img/logos/meanlogo.png)](http://mean.io/) M.E.A.N Stack
+# [![MEAN Logo](http://mean.io/system/assets/img/logos/meanlogo.png)](http://mean.io/) MEAN Stack
 
 MEAN is a framework for an easy starting point with [MongoDB](http://www.mongodb.org/), [Node.js](http://www.nodejs.org/), [Express](http://expressjs.com/), and [AngularJS](http://angularjs.org/) based applications. It is designed to give you a quick and organized way to start developing MEAN based web apps with useful modules like Mongoose and Passport pre-bundled and configured. We mainly try to take care of the connection points between existing popular frameworks and solve common integration problems.
-## Prerequisites
-* *MongoDB* - <a href="http://www.mongodb.org/downloads">Download</a> and Install mongodb - <a href="http://docs.mongodb.org/manual">Checkout their manual</a> if you're just starting.
+
+## Prerequisite Technologies
+### Linux
 * *Node.js* - <a href="http://nodejs.org/download/">Download</a> and Install Node.js, nodeschool has free <a href=" http://nodeschool.io/#workshoppers">node tutorials</a> to get you started.
+* *MongoDB* - <a href="http://www.mongodb.org/downloads">Download</a> and Install mongodb - <a href="http://docs.mongodb.org/manual">Checkout their manual</a> if you're just starting.
+
+If you're using ubuntu, this is the preferred repository to use...
+
+```bash
+$ curl -sL https://deb.nodesource.com/setup | sudo bash -
+$ sudo apt-get update
+$ sudo apt-get install nodejs
 ```
-sudo apt-get install python-software-properties python g++ make
-sudo add-apt-repository ppa:chris-lea/node.js
-sudo apt-get update
-sudo apt-get install nodejs
-```
+
 * *Git* - Get git using a package manager or <a href="http://git-scm.com/downloads">download</a> it.
-* Grunt - Download and Install [Grunt](http://gruntjs.com).
+
+### Windows
+* *Node.js* - <a href="http://nodejs.org/download/">Download</a> and Install Node.js, nodeschool has free <a href=" http://nodeschool.io/#workshoppers">node tutorials</a> to get you started.
+* *MongoDB* - Follow the great tutorial from the mongodb site - <a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-windows">"Install Mongodb On Windows"</a>
+* *Git* - The easiest way to install git and then run the rest of the commands through the *git bash* application (via command prompt) is by downloading and installing <a href="http://git-scm.com/download/win">Git for Windows</a>
+
+### OSX
+* *Node.js* -  <a href="http://nodejs.org/download/">Download</a> and Install Node.js or use the packages within brew or macports.
+* *MongoDB* - Follow the tutorial here - <a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-os-x/">Install mongodb on OSX</a>
+* *git* - Get git <a href="http://git-scm.com/download/mac">from here</a>.
+
+## Prerequisite packages
+
+* Mean currently works with either grunt or gulp..
 ```
-$ npm install -g grunt-cli
+$ npm install -g gulp
+// and bower
+$ npm install -g bower 
 ```
 
 ## Installation
@@ -33,16 +52,14 @@ $ mean init <myApp>
 $ cd <myApp> && npm install
 ```
 
-### Invoke node with Grunt
-We recommend using [Grunt](https://github.com/gruntjs/grunt-cli) to start the server:
+### Invoke node with a task manager
+Mean supports the gulp task runner for various services which are applied on the code.
+To start your application run - 
 ```bash
-$ grunt
+$ gulp
 ```
-If grunt aborts because of JSHINT errors, these can be overridden with the `force` flag:
-```bash
-$ grunt -f
-```
-Alternatively, when not using `grunt` (and for production environments) you can run:
+
+Alternatively, when not using `gulp` (and for production environments) you can run:
 ```bash
 $ node server
 ```
@@ -52,7 +69,7 @@ http://localhost:3000
 ```
 
 ### Troubleshooting
-During installation depending on your os and prerequiste versions you may encounter some issues.
+During installation depending on your os and prerequisite versions you may encounter some issues.
 
 Most issues can be solved by one of the following tips, but if you are unable to find a solution feel free to contact us via the repository issue tracker or the links provided below.
 
@@ -99,6 +116,15 @@ Some of Mean.io dependencies uses [node-gyp](https://github.com/TooTallNate/node
 $ npm update -g
 ```
 
+#### Git "not found" on Windows
+If you get this error when trying to `mean init`:
+
+```text
+Prerequisite not installed: git
+```
+
+And you definitely have Git for Windows installed, then it's not included in your path. Find the folder containing git.exe (likely `C:\Program Files (x86)\Git\cmd`) and add it to your PATH.
+
 ## Technologies
 
 ### The MEAN stack
@@ -111,7 +137,7 @@ MEAN is an acronym for *M*ongo, *E*xpress.js , *A*ngular.js and *N*ode.js
 <dt>Express</dt>
 <dd>The best way to understand express is through its Official Website, particularly The Express Guide; you can also go through this StackOverflow thread for more resources.</dd>
 <dt>AngularJS</dt>
-<dd>Angular's Official Website is a great starting point. CodeSchool and google created a <a href="https://www.codeschool.com/courses/shaping-up-with-angular-js">great tutorial</a> hreadfor beginners, and the angular videos by <a href="https://egghead.io/">Egghead</a>.</dd>
+<dd>Angular's Official Website is a great starting point. CodeSchool and google created a <a href="https://www.codeschool.com/courses/shaping-up-with-angular-js">great tutorial</a> for beginners, and the angular videos by <a href="https://egghead.io/">Egghead</a>.</dd>
 <dt>Node.js</dt>
 <dd>Start by going through Node.js Official Website and this StackOverflow thread, which should get you going with the Node.js platform in no time.</dd>
 </dl>
@@ -164,7 +190,7 @@ To find new packages run the *mean search* command
 ```bash
 $ mean search [packagename]
 ```
-`mean search` will return all of the available packages, `mean search packagename` will filter the search results.
+`mean search` will return all of the available packages, `mean search [packagename]` will filter the search results.
 
 #### Scaffolding
 To create a new MEAN app, run <code>mean init</code>. Name for the application is optional. If no name is provided, "mean" is used. The MEAN project will be cloned from GitHub into a directory of the application name.
@@ -192,7 +218,7 @@ Everything in mean.io is a package and when extending mean with custom functiona
 
 The mean.io package system allows developers to create modular code that provides useful tools that other mean developers can use. The packages, when published, are plug-and-play and are used in a way very similar to traditional npm packages.
 
-The mean.io package system integrates all the packages into the mean project as if the code was part of mean itself and provides the developers with all the necceesary tools required to integrate their package into the host project.
+The mean.io package system integrates all the packages into the mean project as if the code was part of mean itself and provides the developers with all the necessary tools required to integrate their package into the host project.
 
 There are two types of packages:
 
@@ -210,7 +236,7 @@ The "system" package creates the basic pages as well as defines the layout of th
 #### Users
 The "users" package creates the database model of the user, provides validation as well as various login and registration features.
 #### Access
-The "access" package managers permissions and middleware. It controls the various authentication methods and is dependent on the users package
+The "access" package manages permissions and middleware. It controls the various authentication methods and is dependent on the users package
 #### Theme
 The "theme" package adds some basic CSS and other assets such as images and backgrounds
 #### Articles
@@ -239,19 +265,19 @@ All of the Server side code resides in the `/server` directory.
 All of the Client side code resides in the `/public` directory.
 
     public            
-    --- assets        # Javascript/Css/Images (not aggregated)
-    --- controllers   # Angular Controllers
+    --- assets        # JavaScript/CSS/Images (not aggregated)
+    --- controllers   # Angular controllers
     --- config        # Contains routing files
-    --- services      # Angular Services (also directive and filter folders)
+    --- services      # Angular services (also directive and filter folders)
     --- views         # Angular views
 
-All javascript within public is automatically aggregated with the exception of files in assets which can be manually added using the `aggregateAsset()` function
+All JavaScript within `public` is automatically aggregated with the exception of files in `public/assets`, which can be manually added using the `aggregateAsset()` function.
 
-Files within public of the package can be accessed externally `/[package-name]/path-to-file-relative-to-public` for example to access tokens angular controller tokens/controllers/tokens.js
+Files within the `public` directory of the package can be accessed externally at `/[package-name]/path-to-file-relative-to-public`. For example, to access the `Tokens` Angular controller, `tokens/controllers/tokens.js`.
 
 ###Registering a Package
 
-In order for a Package to work it needs to be registered. By doing this you make package system aware that you are ready and that other packages are able to depend on you. The packages are registered from within `app.js` 
+In order for a Package to work it needs to be registered. By doing this you make the package system aware that you are ready and that other packages are able to depend on you. The packages are registered from within `app.js`.
 
 When registering you are required to declare all your dependencies in order for the package system to make them available to your package.
 
@@ -259,6 +285,7 @@ When registering you are required to declare all your dependencies in order for 
 // Example of registering the MyPackage
 MyPackage.register(function(app, auth, database) {
   // ...
+
 });
 ```
 
@@ -280,14 +307,14 @@ MEAN has 3 pre registered dependencies:
 
 Dependency injection allows you to declare what dependencies you require and rely on the package system to resolve all dependencies for you. Any package registered is automatically made available to anyone who would like to depend on them.
 
-Looking again at the registration example we can see that `MyPackage` depends on the `Tokens` and can make use of it full functionality including overriding it.
+Looking again at the registration example we can see that `MyPackage` depends on the `Tokens` package and can make use of its full functionality, including overriding it.
  
 ```javascript
 // Example of registering the tokens package
 MyPackage.register(function(app, auth, database, Tokens) {
 
   // I can make use of the tokens within my module
-   MyPackage.someExampleFunction('some paramater');
+  MyPackage.someExampleFunction('some parameter');
 
   // I can override functions
   MyPackage.someExampleFunction = function(param) {
@@ -350,13 +377,13 @@ MyPackage.aggregateAsset('js','first.js',{global:true,  weight: -4, group: 'head
 > <script type="text/javascript" src="/modules/aggregated.js?group=header"></script>
 
 ###Settings Object
-The settings object is a persistance object that is stored in the packages collection and allows for saving persistant information per package such as configuration options or admin settings for the package.
+The settings object is a persistence object that is stored in the packages collection and allows for saving persistent information per package such as configuration options or admin settings for the package.
 
   Receives two arguments the first being the settings object the second is a callback function
   
 ```javascript
 MyPackage.settings({'someSetting':'some value'}, function (err, settings) {
-    //you will receive the settings object on success
+    // You will receive the settings object on success
 });
 
 // Another save settings example this time with no callback
@@ -365,7 +392,7 @@ MyPackage.settings({'anotherSettings':'some value'});
 
 // Get settings. Retrieves latest saved settings
 MyPackage.settings(function (err, settings) {
-  //you now have the settings object
+  // You now have the settings object
 });
 ```
 
@@ -412,7 +439,7 @@ $stateProvider
 
 Packages are able to hook into an existing menu system and add links to various menus integrated within Mean.
 
-Each link specifies its `title`, `template`, `menu` and `role` that is allowed to see the link. If the menu specified does not exist a new menu will be created. The menu object is made accessible within the client by means of a *menu angular service* that queries the menu controller for information about links.
+Each link specifies its `title`, `template`, `menu` and `role` that is allowed to see the link. If the menu specified does not exist, a new menu will be created. The menu object is made accessible within the client by means of a *menu angular service* that queries the menu controller for information about links.
 
 Below is an example how to add a link to the main menu from `app.js`
 
@@ -475,7 +502,7 @@ This will render *mycustompackage/views/myhomepage.html* as the home page.
 To create your own package and scaffold its initial code, run the following command:
 
 ```bash
-mean package <packageName>
+$ mean package <packageName>
 ```
 
 This will create a package under */packages/custom/pkgName*
@@ -483,8 +510,8 @@ This will create a package under */packages/custom/pkgName*
 ### Deleting a package
 To delete your package, and remove its files:
 
-```
-mean uninstall myPackage
+```bash
+$ mean uninstall myPackage
 ```
 Where "myPackage" is the name of your package.
 
@@ -494,9 +521,9 @@ Once your package is in good shape and you want to share it with the world you c
 To contribute your package register to the network (see the section below) and run
 
 ```bash 
-mean register # register to the mean network (see below)
-cd <packages/custom/pkgName>
-mean publish
+$ mean register # register to the mean network (see below)
+$ cd <packages/custom/pkgName>
+$ mean publish
 ```
 
 ## MEAN Network
@@ -508,11 +535,11 @@ We're building all of this as we speak but we allready have some elements in pla
 
 #### Registration
 ```bash
-mean register
+$ mean register
 ```
 #### Identity
 ```bash
-mean whoami
+$ mean whoami
 ```
 ### Deploy
 Coming soon!
@@ -563,21 +590,55 @@ $ npm test
 ```
 > NOTE: Running Node.js applications in the __production__ environment enables caching, which is disabled by default in all other environments.
 
+### Logging
+
+As from mean-0.4.4 control over the logging format has been delgated to the env configuration files.
+The formats and implementation are done using the morgan node module and it's [predefined format](https://github.com/expressjs/morgan#predefined-formats)
+Within each configuration file (config/env/development.js) for instance you state the format in the 'logging' object.
+```
+'use strict';
+
+module.exports = {
+  db: 'mongodb://' + (process.env.DB_PORT_27017_TCP_ADDR || 'localhost') + '/mean-dev',
+  debug: true,
+  logging: {
+    format: 'tiny'
+  },
+```
+
+The default for the development environment uses [tiny format](https://github.com/expressjs/morgan#tiny)
+```
+GET /system/views/index.html 304 2.379 ms - -
+GET /admin/menu/main 304 8.687 ms - -
+GET /system/assets/img/logos/meanlogo.png 304 2.803 ms - -
+GET /system/assets/img/backgrounds/footer-bg.png 304 4.481 ms - -
+GET /system/assets/img/ninja/footer-ninja.png 304 3.309 ms - -
+GET /system/assets/img/logos/linnovate.png 304 3.001 ms - -
+```
+
+The production uses the widely used [combined format](https://github.com/expressjs/morgan#combined).
+```
+:1 - - [22/Mar/2015:13:13:42 +0000] "GET /modules/aggregated.js HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36"
+::1 - - [22/Mar/2015:13:13:42 +0000] "GET /modules/aggregated.js?group=header HTTP/1.1" 200 0 "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36"
+::1 - - [22/Mar/2015:13:13:42 +0000] "GET / HTTP/1.1" 200 - "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36"
+::1 - - [22/Mar/2015:13:13:42 +0000] "GET /modules/aggregated.css HTTP/1.1" 200 - "http://localhost:3000/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.101 Safari/537.36"
+```
+
 ## Staying up to date
 After initializing a project, you'll see that the root directory of your project is already a git repository. MEAN uses git to download and update its own code. To handle its own operations, MEAN creates a remote called `upstream`. This way you can use git as you would in any other project. 
 
 To update your MEAN app to the latest version of MEAN
 
 ```bash
-git pull upstream master
-npm install
+$ git pull upstream master
+$ npm install
 ```
 
 To maintain your own public or private repository, add your repository as remote. See here for information on [adding an existing project to GitHub](https://help.github.com/articles/adding-an-existing-project-to-github-using-the-command-line).
 
 ```bash
-git remote add origin <remote repository URL>
-git push -u origin master
+$ git remote add origin <remote repository URL>
+$ git push -u origin master
 ```
 
 
@@ -586,10 +647,10 @@ Since version 0.4.2 MEAN provides a command to easily upload your app to the *me
 To do so all you need to do is the following steps.
 
 1. make sure you have a unique name for your app (not the default mean) and that the name is in the package.json
-1. Run ```mean deploy```
-1. It will create the meanio remote which can be used to update your remote app by ```git push meanio master```
-1. You can add remote command using the --remote flag for instance to add a role to a user on the remote cloud instance run ```mean user -a RoleName emailAddress --remote```
-1. To get an idea of whats happening on the mean log (node.js based logging) run ```mean logs -n 100``` to get the last 100 lines...
+1. Run `mean deploy`
+1. It will create the meanio remote which can be used to update your remote app by `git push meanio master`
+1. You can add remote command using the --remote flag for instance to add a role to a user on the remote cloud instance run `mean user -a RoleName emailAddress --remote`
+1. To get an idea of whats happening on the mean log (node.js based logging) run `mean logs -n 100` to get the last 100 lines...
 
 ### Heroku
 Before you start make sure you have the [Heroku toolbelt](https://toolbelt.heroku.com/)
@@ -599,14 +660,14 @@ which has an easy setup).
 Add the db string to the production env in *server/config/env/production.js*.
 
 ```bash
-git init
-git add .
-git commit -m "initial version"
-heroku apps:create
-heroku config:add NODE_ENV=production
-heroku config:add BUILDPACK_URL=https://github.com/mbuchetics/heroku-buildpack-nodejs-grunt.git
-git push heroku master
-heroku config:set NODE_ENV=production
+$ git init
+$ git add .
+$ git commit -m "initial version"
+$ heroku apps:create
+$ heroku config:add NODE_ENV=production
+$ heroku config:add BUILDPACK_URL=https://github.com/mbuchetics/heroku-buildpack-nodejs-grunt.git
+$ git push heroku master
+$ heroku config:set NODE_ENV=production
 ```
 
 ### OpenShift
